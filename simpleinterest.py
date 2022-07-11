@@ -6,15 +6,15 @@ window.geometry("380x400")
 window.configure(bg="#18db13")
 
 def calculate_interest():
-    principle = principle_entry.get()
-    time = time_entry.get()
-    rate = rate_entry.get()
-    interest = principle*rate*time/100
-    interest = round(interest,1)
+    principle = float(principle_entry.get())
+    time = float(time_entry.get())
+    rate = float(rate_entry.get())
+    interest = (principle*rate*time)/100
+    interest = round(interest,2)
     name = username.get()
     result_label.destroy()
 
-    output_message = Label(result_frame,text = name+", your interest is"+interest, bg="#1db373", font=("Calibri",12), width=40)
+    output_message = Label(result_frame,text = name+", your interest is"+str(interest), bg="#1db373", font=("Calibri",12), width=40)
     output_message.place(x=20,y=40)
     output_message.pack()
 
@@ -45,7 +45,7 @@ rate_entry.place(x=150,y=185)
 time_entry = Entry(window,text="",width=15, bd=2)
 time_entry.place(x=150,y=230)
 
-calculate_button = Button(window,text = "CALCULATE", fg="#1245be", bg="#1db162", bd=4, command=calculate_interest())
+calculate_button = Button(window,text = "CALCULATE", fg="#1245be", bg="#1db162", bd=4, command=calculate_interest)
 calculate_button.place(x=20, y=250)
 
 result_frame = LabelFrame(window,text="Result", bg="#ed8173", font=("Calibri",12))
